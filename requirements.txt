@@ -111,6 +111,7 @@ googleapis-common-protos==1.75.0
 greenlet @ file:///C:/miniconda3/conda-bld/greenlet_1757405549674/work
 grpcio==1.81.1
 grpcio-status==1.81.1
+gunicorn==26.0.0
 h11 @ file:///C:/miniconda3/conda-bld/h11_1761931384726/work
 h2==4.3.0
 h5py @ file:///C:/miniconda3/conda-bld/h5py_1763997403619/work
