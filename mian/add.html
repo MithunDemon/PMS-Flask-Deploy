@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .head {
+            width: 100%;
+            background-color: rgba(223, 66, 66, 0.808);
+            text-align: center;
+            color: white;
+            padding: 1.5% 0;
+
+        }
+
+        .vk {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0px 20px 0px 20px;
+
+        }
+
+        /* Navigation Links */
+        .vk a {
+            position: relative;
+            text-decoration: none;
+            color: #000;
+            font-size: 20px;
+            font-weight: 400;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        /* Underline Animation */
+        .vk a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 10px;
+            transition: width 0.35s ease-in-out;
+        }
+
+        /* Hover Effect */
+        .vk a:hover {
+            color: white;
+        }
+
+        .vk a:hover::after {
+            width: 100%;
+        }
+
+        .list1 {
+
+            width: 50%;
+        }
+
+        .im1 {
+            width: 100%;
+            margin: 30px 20px;
+        }
+
+
+
+        .form-container {
+            width: 50%;
+
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.247);
+            margin: 20px 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 30px;
+            margin: 0 10px;
+            border: none;
+            background: green;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .warning {
+            text-align: center;
+            color: red;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .list {
+            display: flex;
+        }
+
+        @media(max-width:768px) {
+            .form-container {
+                width: 90%;
+
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .list {
+                display: grid;
+            }
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px 10px;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="head">
+        <h1 style="font-size: 44px;">Pharmacy Management System</h1>
+        <div class="vk">
+
+            <a href="{{ url_for('dashboard') }}">
+
+                Account Page
+            </a>
+
+
+
+
+            <a href="{{ url_for('searchmedicine') }}">
+                Search medicine
+
+            </a>
+
+
+
+
+            <a href="{{ url_for('update') }}">
+
+                Update medicine
+
+            </a>
+
+
+
+
+            <a href="{{ url_for('view') }}">
+
+                View medicine
+
+            </a>
+
+
+
+
+
+            <a href="{{ url_for('delete') }}">
+
+                delete medicine
+
+            </a>
+
+            <a href="add.html">
+
+                Billing medicine
+
+            </a>
+
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="list">
+        <div class="list1">
+            <img src="{{ url_for('static', filename='medi.png') }}" alt="" class="im1">
+        </div>
+
+        <div class="form-container">
+            <h1>Add New Medicine</h1>
+
+
+            <form action="{{ url_for('save_medicine') }}" method="post">
+                <div class="form-grid">
+                    <!-- New Field -->
+                    <div class="form-group">
+                        <label>Account Name</label>
+                        <input type="text" name="account_name" autocomplete="off" placeholder="Enter Account Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>B.NO</label>
+                        <input type="text" name="bid" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Medicine Name</label>
+                        <input type="text" name="name" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Medicine Company</label>
+                        <input type="text" name="company" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Stock</label>
+                        <input type="number" name="stock" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Medicine Price</label>
+                        <input type="number" name="price" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label>MFG Date</label>
+                        <input type="date" name="date" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" class="btn">Save</button>
+                    <button>Exit</button>
+                    <button>Clear</button>
+                </div>
+            </form>
+
+            <p class="warning">
+                Warning: Before saving, please check the B.NO, Name and Company name.
+            </p>
+        </div>
+
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Pharmacy Management System</h3>
+            <p>Manage Medicines, Stock, Billing and Reports Efficiently</p>
+            <p>© 2026 All Rights Reserved | Developed by Mithun</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

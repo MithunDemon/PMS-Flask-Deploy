@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pharmacy Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .make {
+
+            width: 900px;
+            margin: 40px auto;
+
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.712);
+
+        }
+
+        .rcb {
+
+
+            display: flex;
+            gap: 60px;
+
+
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #0d6efd;
+            font-weight: bold;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #999;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 40px;
+            resize: none;
+        }
+
+        input[type="file"] {
+            padding: 8px;
+        }
+
+        .btn-box {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-box button {
+            padding: 12px 95px;
+            background: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-box button:hover {
+            background: #0b5ed7;
+            transform: translateY(-2px);
+        }
+
+
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px 10px;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light "
+        style="background-color: #c9ae37a9;   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.8);">
+        <div class="container-fluid">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: center;">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <form action="/register" method="POST" enctype="multipart/form-data">
+
+        <div class="make">
+
+            <h1 class="title">Pharmacy Registration Request</h1>
+
+
+
+            <div class="rcb">
+
+                <!-- Left Column -->
+                <div class="column">
+
+                    <label>Pharmacy Name</label>
+                    <input type="text" name="pharmacy_name" placeholder="Enter Pharmacy Name" autocomplete="off" required>
+
+                    <label>Owner Name</label>
+                    <input type="text" name="owner_name" placeholder="Enter Owner Name" autocomplete="off" required>
+
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="Enter Username" autocomplete="off" required>
+
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Enter Password" autocomplete="off" required>
+
+                    <label>Mobile Number</label>
+                    <input type="text" name="mobile" placeholder="Enter Mobile Number" autocomplete="off" required>
+
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Enter Email" autocomplete="off" required>
+
+                </div>
+
+                <!-- Right Column -->
+                <div class="column">
+
+                    <label>Drug License Number</label>
+                    <input type="text" name="license_no" placeholder="Enter Drug License Number" autocomplete="off" required>
+
+                    <label>GST Number</label>
+                    <input type="text" name="gst" placeholder="Enter GST Number" autocomplete="off"> 
+
+                    <label>Address</label>
+                    <textarea name="address" placeholder="Enter Address"></textarea>
+
+                    <label>Upload Drug License</label>
+                    <input type="file" name="license_file" required>
+
+                    <label>Upload Pharmacist Certificate</label>
+                    <input type="file" name="certificate_file" required>
+
+                    <label>Upload Shop Photo</label>
+                    <input type="file" name="shop_photo" required>
+
+                </div>
+
+            </div>
+
+            <div class="btn-box">
+                <button type="submit">Send Request</button>
+            </div>
+        </div>
+
+    </form>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Pharmacy Management System</h3>
+            <p>Manage Medicines, Stock, Billing and Reports Efficiently</p>
+            <p>© 2026 All Rights Reserved | Developed by Mithun</p>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>

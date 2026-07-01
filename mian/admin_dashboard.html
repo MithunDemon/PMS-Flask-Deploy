@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            margin: 30px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .approve {
+            background: green;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .reject {
+            background: red;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Pharmacy Registration Requests</h1>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Pharmacy</th>
+            <th>Owner</th>
+            <th>Username</th>
+            <th>Mobile</th>
+            <th>Status</th>
+            <th>Approve</th>
+            <th>Reject</th>
+        </tr>
+
+        {% for user in users %}
+
+        <tr>
+
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+            <td>{{ user[2] }}</td>
+            <td>{{ user[3] }}</td>
+            <td>{{ user[5] }}</td>
+            <td>{{ user[12] }}</td>
+
+            <td>
+                <a href="/approve/{{user[0]}}" class="approve">
+                    Approve
+                </a>
+            </td>
+
+            <td>
+                <a href="/reject/{{user[0]}}" class="reject">
+                    Reject
+                </a>
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>

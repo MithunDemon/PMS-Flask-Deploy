@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>View Medicines</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+
+
+
+
+
+        .head {
+            width: 100%;
+            background-color: rgba(223, 66, 66, 0.808);
+            text-align: center;
+            color: white;
+            padding: 1.5% 0;
+
+
+
+        }
+
+
+        /* Navigation Container */
+        .vk {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px 20px 0px 20px;
+
+        }
+
+        /* Navigation Links */
+        .vk a {
+            position: relative;
+            text-decoration: none;
+            color: #000;
+            font-size: 20px;
+            font-weight: 400;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        /* Underline Animation */
+        .vk a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 10px;
+            transition: width 0.35s ease-in-out;
+        }
+
+        /* Hover Effect */
+        .vk a:hover {
+            color: white;
+        }
+
+        .vk a:hover::after {
+            width: 100%;
+        }
+
+
+        label {
+            width: 50%;
+            padding: 10px;
+
+            border-radius: 5px;
+
+            outline: none;
+            margin-left: 170px;
+        }
+
+
+        input {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+
+            outline: none;
+            margin-left: 100px;
+        }
+
+        .fg {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+
+            outline: none;
+            margin-left: 170px;
+
+        }
+
+        input:focus {
+            border-color: #3498db;
+        }
+
+        .wq {
+            width: 50%;
+            margin: 40px 20px;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            height: 400px;
+
+        }
+
+        .ok {
+            display: flex;
+        }
+
+        .pop {
+
+            width: 50%;
+            margin: 40px 20px;
+            border-radius: 5px;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            height: 400px;
+
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px 10px;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="head">
+        <h1 style="font-size: 44px;">Pharmacy Management System</h1>
+        <div class="vk">
+
+
+            <a href="{{ url_for('dashboard') }}">
+
+                Account Page
+            </a>
+
+
+
+            <a href="{{ url_for('add') }}">
+
+                Add medicine
+
+            </a>
+
+
+            <a href="{{ url_for('searchmedicine') }}">
+                Search medicine
+
+            </a>
+
+
+
+
+            <a href="{{ url_for('update') }}">
+
+                Update medicine
+
+            </a>
+
+
+
+
+
+            <a href="add.html">
+
+                Billing medicine
+
+            </a>
+
+        </div>
+    </header>
+
+
+    <div class="ok">
+
+
+
+
+
+        <div class="wq">
+            <h2 style="text-align: center;padding-top: 40px;margin-bottom: 30px;">View Medicines</h2>
+
+            <form action="{{ url_for('view') }}" method="POST">
+
+                <input type="text" name="account_name" placeholder="Enter Account Name" required autocomplete="off">
+
+                <button type="submit"
+                    style=" box-shadow:0 8px 20px rgba(0,0,0,0.15);padding: 10px 30px;background-color: greenyellow;outline: none;border: 1px solid gray;border-radius: 5px;">View
+                    Medicines</button>
+
+            </form>
+
+            <p style="color:red;margin-left: 37%;margin-top: 20px;">{{ message }}</p>
+
+            <table border="0" cellpadding="12" style="
+        margin:40px auto;
+        width:90%;
+        max-width:1000px;
+        border-collapse:collapse;
+        background:#ffffff;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 8px 20px rgba(0,0,0,0.15);
+        text-align:center;
+        font-family:Arial, Helvetica, sans-serif;
+    ">
+
+                <tr style="background:#0d6efd;color:white;font-size:18px;">
+                    <th style="padding:15px;">B.NO</th>
+                    <th style="padding:15px;">Name</th>
+                    <th style="padding:15px;">Company</th>
+                    <th style="padding:15px;">Price</th>
+                    <th style="padding:15px;">Stock</th>
+                    <th style="padding:15px;">Date</th>
+                </tr>
+
+                {% for medicine in medicines %}
+
+                <tr style="border-bottom:1px solid #dddddd;">
+                    <td style="padding:12px;">{{ medicine[0] }}</td>
+                    <td style="padding:12px;">{{ medicine[1] }}</td>
+                    <td style="padding:12px;">{{ medicine[2] }}</td>
+                    <td style="padding:12px;color:#198754;font-weight:bold;">₹{{ medicine[3] }}</td>
+                    <td style="padding:12px;color:#dc3545;font-weight:bold;">{{ medicine[4] }}</td>
+                    <td style="padding:12px;">{{ medicine[5] }}</td>
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+
+        </div>
+
+        <div class="pop">
+
+            <h2 style="text-align: center;padding-top: 45px;padding-bottom: 30px;">Delete Medicine</h2>
+
+            <form action="{{ url_for('delete') }}" method="POST">
+
+                <label>Account Name</label><br>
+                <input type="text" name="account_name" class="fg" required autocomplete="off"><br><br>
+
+                <label>Medicine Name</label><br>
+                <input type="text" name="medicine_name" class="fg" required autocomplete="off"><br><br>
+
+                <button type="submit"
+                    style="width: 50%; margin-left: 27%;padding: 10px 30px;background-color: greenyellow;outline: none;border: 1px solid gray;border-radius: 5px;">Delete</button>
+
+            </form>
+
+            <h3 style="color:red;margin-left: 27%;">{{ messag }}</h3>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Pharmacy Management System</h3>
+            <p>Manage Medicines, Stock, Billing and Reports Efficiently</p>
+            <p>© 2026 All Rights Reserved | Developed by Mithun</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
